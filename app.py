@@ -359,7 +359,7 @@ def final_prediction():
     prediction  = model.predict(features)
     probability = model.predict_proba(features)
     label       = label_encoder.inverse_transform(prediction)[0].lower()
-    confidence  = round(max(probability[0]) * 100, 2)
+    confidence  = float(round(max(probability[0]) * 100, 2))
 
     # Map model label to risk + recommendation
     if label in ["dd", "dyscalculia"]:
