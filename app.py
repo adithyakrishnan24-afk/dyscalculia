@@ -142,8 +142,8 @@ def register():
         password  = request.form["password"]
         role      = request.form["role"]
         age       = int(request.form.get("age", 10))
-        teacher_id = request.form.get("teacher_id")
-        parent_id  = request.form.get("parent_id")
+        teacher_id = request.form.get("teacher_id") or None
+        parent_id  = request.form.get("parent_id") or None
         hashed = bcrypt.generate_password_hash(password).decode("utf-8")
         if role == "Student":
             cur.execute(
